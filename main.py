@@ -1,9 +1,7 @@
 
-import os
 import flask
-import pandas as pd
-import time
-from analyze import main
+from xml_sitemap_generator.job import main
+from jinja2 import Template
 
 ##### **** APPLICATION **** #####
 
@@ -36,9 +34,22 @@ def load_data_to_database_csv():
     
     file = flask.request.files['file']
     
-    df = main(file)
+    list_of_filenames = main(file)
     
-    return df.to_html()
+    print(list_of_filenames)
+    
+    # list_of_filenames to html template 
+    html = Template('''
+        <ul>        
+            {% for filename in list_of_filenames %}
+                <li>
+                    <span>{{ filename }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    ''')
+    
+    return html.render(list_of_filenames = list_of_filenames)
 
 if __name__ == "__main__":
     app.run(debug=True)
