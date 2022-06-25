@@ -55,7 +55,7 @@ def generate_sitemap(df, use_parent_directory=True):
     ''')
     num_of_items = 50000
     
-    
+
     if use_parent_directory:
         
         sitemap_list = []
@@ -104,11 +104,9 @@ def generate_sitemap(df, use_parent_directory=True):
         return list(gen)
 
 def main(file, lastmod_date = None, changefreq = None, priority = None):
-    
     urls_df = pd.read_csv(file)
-    
-    # update urls_df index col 0 to be 'loc'
-    urls_df.columns = ['URL', 'Page Type', 'Site Type']
+
+    urls_df.columns = urls_df.columns.to_list()
     urls_df['first_directory'] = urls_df['URL'].apply(get_parent_directory_from_url) 
     if lastmod_date is None:
         lastmod_date = today
