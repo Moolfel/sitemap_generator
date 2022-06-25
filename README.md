@@ -2,7 +2,7 @@
 
 #### First Test
 1. Clone repo
-2. Make .sh into execuitable `chmod +x start.sh`
+2. Make .sh into execuitable `chmod +x run.sh`
 3. Run `./run.sh`
 
 **Above will only work on linux / unix os. Will have to install dependencies manually and run with `python main.py` if on Windows (unless using WSL on Windows to run).
