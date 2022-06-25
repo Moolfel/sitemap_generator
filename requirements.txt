@@ -1,7 +1,10 @@
 aiohttp==3.8.1
 XlsxWriter==3.0.3
-pandas==1.4.2
+pandas
 PyYAML==6.0
 bs4==0.0.1
 lxml==4.9.0
-Flask==2.0.2
+Flask
+pytest
+werkzeug
+flask_api

@@ -45,7 +45,7 @@ def generate_sitemap(df, use_parent_directory=True):
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">        
         {% for row in urls_df.itertuples() %}
         <url>
-        <loc>{{ row.loc }}</loc>
+        <loc>{{ row.URL }}</loc>
         <lastmod>{{ row.lastmod_date }}</lastmod>
         <changefreq>{{ row.changefreq }}</changefreq>
         <priority>{{ row.priority }}</priority>
@@ -108,10 +108,8 @@ def main(file, lastmod_date = None, changefreq = None, priority = None):
     urls_df = pd.read_csv(file)
     
     # update urls_df index col 0 to be 'loc'
-    urls_df.columns = ['loc']
-    
-    urls_df['first_directory'] = urls_df['loc'].apply(get_parent_directory_from_url)
-            
+    urls_df.columns = ['URL', 'Page Type', 'Site Type']
+    urls_df['first_directory'] = urls_df['URL'].apply(get_parent_directory_from_url) 
     if lastmod_date is None:
         lastmod_date = today
     
