@@ -1,6 +1,5 @@
 import datetime
 import os
-from typing import List
 from zipfile import ZipFile
 
 import pandas as pd
